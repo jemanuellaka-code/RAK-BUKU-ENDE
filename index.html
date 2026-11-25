@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f1">
+  <meta name="description" content="RAK BUKU ENDE — ruang baca pribadi untuk merawat koleksi dan perjalanan membaca.">
+  <title>RAK BUKU ENDE — Ruang baca pribadimu</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navigasi utama">
+      <a class="brand" href="#beranda" aria-label="RAK BUKU ENDE, beranda">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 36 36" fill="none"><path d="M5 9.2c4.7-.9 8.4.1 13 3.2v17c-4.6-3-8.3-4-13-3.1V9.2Z" fill="currentColor" opacity=".94"/><path d="M31 9.2c-4.7-.9-8.4.1-13 3.2v17c4.6-3 8.3-4 13-3.1V9.2Z" fill="currentColor" opacity=".62"/><path d="M18 12.4v17" stroke="#F6F4EC" stroke-width="1.5"/><path d="M8.5 13.4c2.6-.1 5 .5 7 1.8M8.5 17c2.6-.1 5 .5 7 1.8" stroke="#F6F4EC" stroke-width="1.1" stroke-linecap="round" opacity=".8"/></svg>
+        </span>
+        <span class="brand-copy"><strong>RAK BUKU</strong><small>ENDE · RUANG BACA</small></span>
+      </a>
+
+      <div class="nav-caption">PERPUSTAKAAN</div>
+      <nav class="sidebar-nav">
+        <button class="sidebar-link is-active" type="button" data-nav-filter="all" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c3-.6 5.3.1 8 2v11c-2.7-1.9-5-2.6-8-2V5.5Zm16 0c-3-.6-5.3.1-8 2v11c2.7-1.9 5-2.6 8-2V5.5Z"/><path d="M12 7.5v11"/></svg>
+          <span class="nav-label">Semua buku</span><span class="nav-count" id="allCount">0</span>
+        </button>
+        <button class="sidebar-link" type="button" data-nav-filter="reading">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.2 2"/></svg>
+          <span class="nav-label">Sedang dibaca</span><span class="nav-count" id="readingCount">0</span>
+        </button>
+        <button class="sidebar-link" type="button" data-nav-filter="read">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.4 4L19 7"/><circle cx="12" cy="12" r="9"/></svg>
+          <span class="nav-label">Sudah selesai</span><span class="nav-count" id="readCount">0</span>
+        </button>
+        <button class="sidebar-link" type="button" data-nav-filter="unread">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5h14v14H5z"/><path d="M8.5 9h7M8.5 12h7M8.5 15h4"/></svg>
+          <span class="nav-label">Belum dibaca</span><span class="nav-count" id="unreadCount">0</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-note">
+        <span class="note-spark" aria-hidden="true">✳</span>
+        <p>“Satu buku, satu perjalanan baru.”</p>
+        <span>CATATAN KECIL</span>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="storage-note"><span class="storage-dot"></span> Tersimpan di perangkat ini</div>
+        <button class="sidebar-add" type="button" data-open-modal>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span>Tambah buku</span>
+          <span class="shortcut">+</span>
+        </button>
+        <div class="profile-row"><div class="profile-avatar">S</div><div><strong>Pembaca</strong><small>Penjaga rak</small></div><span class="profile-menu" aria-hidden="true">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="beranda">
+      <header class="topbar">
+        <div class="breadcrumb"><span>Ruang pribadi</span><span class="crumb-separator">/</span><strong id="breadcrumbLabel">Semua buku</strong></div>
+        <div class="topbar-actions">
+          <span class="today-date" id="todayDate"></span>
+          <button class="top-add" type="button" data-open-modal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Tambah buku</span></button>
+          <div class="top-avatar" aria-label="Profil pembaca">S</div>
+        </div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="hero-panel" aria-labelledby="heroTitle">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> TEMPAT CERITA MENEMUKAN RUMAH</div>
+            <h1 id="heroTitle">Setiap buku<br><em>menyimpan dunia.</em></h1>
+            <p>Rawat koleksimu, tandai perjalananmu, dan selalu tahu cerita mana yang menunggumu.</p>
+            <a class="hero-link" href="#koleksi">Lihat rak bukuku <span aria-hidden="true">↘</span></a>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="sun-disc"></div>
+            <div class="art-spark spark-one">✳</div><div class="art-spark spark-two">✦</div>
+            <div class="book-stack stack-back"><span></span><i></i></div>
+            <div class="book-stack stack-mid"><span></span><i></i></div>
+            <div class="book-stack stack-front"><span></span><i></i></div>
+            <div class="hero-art-caption">CERITA FAVORIT<br><b>selalu dekat.</b></div>
+          </div>
+          <div class="hero-index">01 <span>—</span> YOUR READING ROOM</div>
+        </section>
+
+        <section class="stats-row" aria-label="Ringkasan koleksi">
+          <article class="stat-card stat-total"><div class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c3-.6 5.3.1 8 2v11c-2.7-1.9-5-2.6-8-2V5.5Zm16 0c-3-.6-5.3.1-8 2v11c2.7-1.9 5-2.6 8-2V5.5Z"/><path d="M12 7.5v11"/></svg></div><div><span class="stat-label">TOTAL KOLEKSI</span><strong id="totalStat">0</strong><small>buku di rakmu</small></div><span class="stat-index">01</span></article>
+          <article class="stat-card stat-reading"><div class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.2 2"/></svg></div><div><span class="stat-label">SEDANG DIBACA</span><strong id="readingStat">0</strong><small>cerita berlanjut</small></div><span class="stat-index">02</span></article>
+          <article class="stat-card stat-finished"><div class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.4 4L19 7"/><circle cx="12" cy="12" r="9"/></svg></div><div><span class="stat-label">SUDAH SELESAI</span><strong id="readStat">0</strong><small>kisah dituntaskan</small></div><span class="stat-index">03</span></article>
+          <article class="stat-card stat-unread"><div class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5h14v14H5z"/><path d="M8.5 9h7M8.5 12h7M8.5 15h4"/></svg></div><div><span class="stat-label">MENUNGGU DIBACA</span><strong id="unreadStat">0</strong><small>siap jadi petualangan</small></div><span class="stat-index">04</span></article>
+        </section>
+
+        <section class="collection-section" id="koleksi" aria-labelledby="collectionTitle">
+          <div class="collection-heading">
+            <div><div class="eyebrow section-eyebrow">DAFTAR CERITA</div><h2 id="collectionTitle">Koleksi <em>kamu</em><span class="heading-count" id="headingCount">0</span></h2><p class="section-subtitle">Semua cerita yang sudah menemukan tempatnya.</p></div>
+            <button class="text-add" type="button" data-open-modal><span>+</span> Buku baru</button>
+          </div>
+
+          <div class="toolbar">
+            <label class="search-box" for="searchInput"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4 4"/></svg><input id="searchInput" type="search" placeholder="Cari judul, penulis, atau genre..." autocomplete="off"><kbd>/</kbd></label>
+            <div class="filter-tabs" role="group" aria-label="Filter status bacaan">
+              <button class="filter-tab is-selected" type="button" data-filter="all" aria-pressed="true">Semua</button>
+              <button class="filter-tab" type="button" data-filter="reading" aria-pressed="false">Dibaca</button>
+              <button class="filter-tab" type="button" data-filter="unread" aria-pressed="false">Belum</button>
+              <button class="filter-tab" type="button" data-filter="read" aria-pressed="false">Selesai</button>
+            </div>
+          </div>
+
+          <div class="results-line"><span id="resultsText">Menampilkan koleksi</span><span class="results-sort"><span class="sort-dot"></span> Rak pribadi</span></div>
+          <div class="book-grid" id="bookGrid" aria-live="polite"></div>
+          <div class="empty-state" id="emptyState" hidden>
+            <div class="empty-icon"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M8 11c5-1 9 .1 14 3.2v20c-5-3.1-9-4.2-14-3.2V11Zm28 0c-5-1-9 .1-14 3.2v20c5-3.1 9-4.2 14-3.2V11Z"/><path d="M16 18c1.5.1 3 .7 4.3 1.5M16 22c1.5.1 3 .7 4.3 1.5"/></svg></div>
+            <h3 id="emptyTitle">Belum ada buku di sini</h3><p id="emptyMessage">Tambahkan cerita pertama untuk mulai mengisi rakmu.</p>
+            <button class="empty-add" type="button" data-open-modal>Tambahkan buku <span aria-hidden="true">↗</span></button>
+          </div>
+        </section>
+
+        <footer class="page-footer"><span>Dirawat dengan rasa ingin tahu.</span><span>RAK BUKU ENDE <i>✳</i></span></footer>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="book-dialog" id="bookDialog" aria-labelledby="dialogTitle">
+    <form id="bookForm" class="dialog-form">
+      <div class="dialog-topline"><span class="eyebrow">TAMBAH KE RAK</span><button class="dialog-close" type="button" data-close-modal aria-label="Tutup dialog">×</button></div>
+      <div class="dialog-heading"><h2 id="dialogTitle">Buku baru,<br><em>cerita baru.</em></h2><p>Isi beberapa detail, biar rakmu makin mengenal koleksinya.</p></div>
+      <label class="field-label" for="bookTitle">Judul buku <span>*</span><input id="bookTitle" name="title" type="text" maxlength="90" placeholder="Contoh: Perempuan yang Menangis kepada Bulan Hitam" required></label>
+      <label class="field-label" for="bookAuthor">Nama penulis <span>*</span><input id="bookAuthor" name="author" type="text" maxlength="70" placeholder="Nama penulis" required></label>
+      <div class="field-pair"><label class="field-label" for="bookGenre">Genre<input id="bookGenre" name="genre" type="text" maxlength="35" placeholder="Mis. Fiksi"></label><label class="field-label" for="bookPages">Jumlah halaman<input id="bookPages" name="pages" type="number" min="1" max="10000" placeholder="320"></label></div>
+      <label class="field-label" for="bookStatus">Status bacaan<select id="bookStatus" name="status"><option value="unread">Belum dibaca</option><option value="reading">Sedang dibaca</option><option value="read">Sudah selesai</option></select></label>
+      <div class="dialog-actions"><button class="cancel-button" type="button" data-close-modal>Batal</button><button class="save-button" type="submit">Simpan ke rak <span aria-hidden="true">↗</span></button></div>
+      <p class="required-note"><span>*</span> wajib diisi</p>
+    </form>
+  </dialog>
+  <dialog class="book-dialog detail-dialog" id="detailDialog" aria-labelledby="detailTitle">
+    <div id="detailContent"></div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
